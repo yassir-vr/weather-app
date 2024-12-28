@@ -10,7 +10,7 @@ function App() {
   const { weather, loading, error, getWeatherForCity } = useWeather();
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center p-2 bg-blue-600 rounded-full mb-6">
@@ -24,13 +24,17 @@ function App() {
           </p>
         </div>
 
-        <div className="glass-card rounded-2xl p-8 mb-8">
-          <CitySearch onCitySelect={getWeatherForCity} />
+        {/* Search Section with spacing */}
+        <div className="mb-24 relative z-50">
+          <div className="glass-card rounded-2xl p-8">
+            <CitySearch onCitySelect={getWeatherForCity} />
+          </div>
         </div>
 
-        <div className="relative">
+        {/* Weather Display Section */}
+        <div className="relative z-40">
           {loading && (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex justify-center">
               <LoadingSpinner />
             </div>
           )}
@@ -55,5 +59,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
